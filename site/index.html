@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Flip Margin Scraper Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Flip Margin Scraper (GitHub Pages Demo)</h1>
+    <p>This is a static demo of the latest generated margin opportunities. For live scraping, run <code>python app.py</code> locally.</p>
+    <p><a id="run-local" href="#">Run locally instructions</a></p>
+
+    <section class="panel">
+      <h2>Top opportunities</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Buy Avg ($)</th>
+            <th>Sold Avg ($)</th>
+            <th>Margin %</th>
+            <th>Confidence %</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </section>
+  </main>
+  <script>
+    const rows = document.getElementById('rows');
+    fetch('data.json').then(r => r.json()).then(data => {
+      if (!data.items.length) {
+        rows.innerHTML = '<tr><td colspan="5">No data generated yet.</td></tr>';
+        return;
+      }
+      rows.innerHTML = data.items.map(i => `\
+        <tr>\
+          <td>${i.query}</td>\
+          <td>${i.current_price}</td>\
+          <td>${i.sold_avg_price}</td>\
+          <td class="strong">${i.margin_percent}</td>\
+          <td>${i.confidence}</td>\
+        </tr>`).join('');
+    }).catch(() => {
+      rows.innerHTML = '<tr><td colspan="5">Unable to load data.json</td></tr>';
+    });
+
+    document.getElementById('run-local').onclick = (e) => {
+      e.preventDefault();
+      alert('Run locally: python app.py then open http://127.0.0.1:8000');
+    };
+  </script>
+</body>
+</html>

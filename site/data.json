@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "query": "vintage camera",
+      "current_price": 45.0,
+      "sold_avg_price": 99.0,
+      "margin_percent": 120.0,
+      "confidence": 62.0,
+      "source_url": "https://www.ebay.com/sch/i.html?_nkw=vintage+camera"
+    },
+    {
+      "query": "guitar pedal",
+      "current_price": 38.5,
+      "sold_avg_price": 70.0,
+      "margin_percent": 81.82,
+      "confidence": 58.0,
+      "source_url": "https://www.ebay.com/sch/i.html?_nkw=guitar+pedal"
+    },
+    {
+      "query": "mechanical keyboard",
+      "current_price": 28.0,
+      "sold_avg_price": 49.0,
+      "margin_percent": 75.0,
+      "confidence": 55.0,
+      "source_url": "https://www.ebay.com/sch/i.html?_nkw=mechanical+keyboard"
+    }
+  ],
+  "errors": []
+}
